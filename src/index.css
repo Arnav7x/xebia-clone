@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #FF6B35;
+  --color-secondary: #004E89;
+  --color-accent: #F7C59F;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  
+  --animate-float-slow: floatSlow 18s ease-in-out infinite;
+  --animate-float-reverse: floatReverse 22s ease-in-out infinite;
+  --animate-float-delayed: floatDelayed 25s ease-in-out infinite;
+  
+  @keyframes floatSlow {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-40px) rotate(15deg) scale(1.1); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  }
+  @keyframes floatReverse {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(40px) rotate(-15deg) scale(0.9); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  }
+  @keyframes floatDelayed {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(10deg) scale(1.05); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans bg-white dark:bg-[#110515] text-gray-900 dark:text-gray-100;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.2);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.4);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.delay-500 { animation-delay: 500ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-1100 { animation-delay: 1100ms; }
